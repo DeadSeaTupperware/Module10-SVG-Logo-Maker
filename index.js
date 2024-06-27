@@ -1,3 +1,4 @@
+// Establish dependencies for inquirer, fs, and importing the shapes.js
 const inquirer = require('inquirer');
 const fs = require('fs');
 const { Circle, Triangle, Square } = require("./lib/shapes");
@@ -10,6 +11,7 @@ function userPrompt() {
             type: 'input',
             name: 'text',
             message: "Enter text for your graphic, up to three characters.",
+            // Checks that input is not longer than 3 characters.
             validate: (answer) => {
                 if (answer.length > 3) {
                     return console.log("\n Text must be three characters or less! Please try again");
@@ -60,6 +62,7 @@ function userPrompt() {
         </svg>`
 
 
+       // Writes the customized svgString to the logo.svg in the root of the project.
        fs.writeFile('logo.svg', svgString, (err) => {
         if (err) {
             console.error(err);
